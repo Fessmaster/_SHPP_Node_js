@@ -7,7 +7,7 @@ someReviewes.push( new Reviews(1244, 'Sam', 'Good item!', 5, 2, 3, 5 ));
 someReviewes.push( new Reviews(1238, 'John', 'This is shit!', 1, 1, 1, 1 ));
 someReviewes.push( new Reviews(1222, 'Bob', 'Uiiiiiii!', 5, 5, 5, 5 ));
 
-const newReview = new Reviews(666, 'Adolf', 'Haile!', 3, 4, 5, 1 );
+const newReview = new Reviews(666, 'Greg', 'Not bad!', 3, 4, 5, 1 );
 
 const item = new Product (4523, 'hat', 'New red hat', 200.5, 'Addidas', someReviewes, someImages)
 
