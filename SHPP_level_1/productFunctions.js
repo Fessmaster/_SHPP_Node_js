@@ -6,4 +6,13 @@ function searchProducts(products, search) {
         );
     });
 }
-export { searchProducts };
+
+function sortProducts(products, sortRule) {
+    return products.sort((firstProduct, secondProduct) => {        
+            if (firstProduct[sortRule] < secondProduct[sortRule]) return -1;
+            if (firstProduct[sortRule] === secondProduct[sortRule]) return 0;
+            if (firstProduct[sortRule] > secondProduct[sortRule]) return 1;        
+    });
+}
+
+export { searchProducts, sortProducts };
