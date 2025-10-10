@@ -158,3 +158,5 @@ printFieldsOnly(() => sortProducts(products, "ID"));
 
 console.log("-- Test 17: Try function sortProducts by name");
 printFieldsOnly(() => sortProducts(products, "name"));
+
+
