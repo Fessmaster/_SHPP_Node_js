@@ -41,5 +41,11 @@ Clothes.prototype.setColor = function (color) {
   this.color = color;
   return this;
 };
+Clothes.prototype.getFullInformation = function () {
+  let information = AbstractProduct.prototype.getFullInformation.call(this);
+  information += `Material - ${this.material} \n`
+  information += `Color - ${this.color}`
+  return information
+}
 
 export { Clothes };

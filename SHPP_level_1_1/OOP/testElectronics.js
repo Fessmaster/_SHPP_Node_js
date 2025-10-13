@@ -1,9 +1,6 @@
-import { 
-  Product, 
-  Reviews, 
-  searchProducts, 
-  sortProducts } from "./product.js";
-
+import { Electronics } from "./Electronics.js";
+import { Reviews } from "./AbstractProduct.js";
+import { AbstractProduct, searchProducts, sortProducts  } from "./AbstractProduct.js";
 
 
 const tryMethod = (func) => {
@@ -25,81 +22,100 @@ someReviews.push(new Reviews(1222, "Bob", "I am happy!", 5, 5, 5, 5));
 
 const newReview = new Reviews(3242, "Greg", "Not bad!", 5, 4, 5, 3);
 
-const item = new Product(
-  4523,
-  "Hat",
-  "New red hat",
-  200.5,
-  "Adidas",
+const item = new Electronics(
+  "DeWalt DCD991P2", //name
+  "New drill", // description
+  400, // price
+  15, // quantity
   someReviews,
-  someImages
+  someImages,
+  "DeWalt", // brand
+  12, // warranty
+  1500 // power
 );
 
 const products = [];
 products.push(
-  new Product(
-    3465,
-    "Hat",
-    "New red hat",
-    200.5,
-    "Adidas",
+  new Electronics(
+    "iPhone 15 Pro",
+    "Latest smartphone with advanced camera",
+    999,
+    25,
     someReviews,
-    someImages
+    someImages,
+    "Apple",
+    12,
+    0
   )
 );
+
 products.push(
-  new Product(
-    5680,
-    "Red Hat",
-    "New red baseball cap",
-    200.5,
-    "Adidas",
+  new Electronics(
+    "Samsung QLED 4K TV",
+    "Smart TV with quantum dot technology",
+    1200,
+    8,
     someReviews,
-    ["hat1.jpg", "hat2.jpg"]
+    someImages,
+    "Samsung",
+    24,
+    150
   )
 );
+
 products.push(
-  new Product(
-    1123,
-    "Blue T-Shirt",
-    "Comfortable cotton t-shirt",
-    350.0,
-    "Nike",
+  new Electronics(
+    "MacBook Air M2",
+    "Thin and lightweight laptop",
+    1299,
+    12,
     someReviews,
-    ["tshirt1.jpg"]
+    someImages,
+    "Apple",
+    12,
+    0
   )
 );
+
 products.push(
-  new Product(
-    4539,
-    "Black Jacket",
-    "Windproof sports jacket",
-    1200.0,
-    "Puma",
+  new Electronics(
+    "Bosch Professional GWS 850",
+    "Angle grinder for professional use",
+    180,
+    18,
     someReviews,
-    ["jacket1.jpg", "jacket2.jpg", "jacket3.jpg"]
+    someImages,
+    "Bosch",
+    36,
+    850
   )
 );
+
 products.push(
-  new Product(
-    2278,
-    "White Sneakers",
-    "Running shoes with cushioning",
-    1800.75,
-    "Reebok",
-    [],
-    ["shoes1.jpg", "shoes2.jpg"]
+  new Electronics(
+    "Sony WH-1000XM5",
+    "Wireless noise-canceling headphones",
+    350,
+    30,
+    someReviews,
+    someImages,
+    "Sony",
+    12,
+    0
   )
 );
+
 products.push(
-  new Product(
-    7845,
-    "Red Hat",
-    "Waterproof backpack for sports",
-    750.25,
-    "Under Armour",
-    [],
-    ["backpack1.jpg"]
+  new Electronics(
+    "Dyson V11 Absolute",
+    "Cordless vacuum cleaner",
+    600,
+    10,
+    someReviews,
+    someImages,
+    "Dyson",
+    24,
+    650
   )
 );
 
@@ -117,18 +133,6 @@ console.log(item.getImage(), "\n");
 
 console.log("-- Test 5: Try to get image with wrong index");
 tryMethod(() => item.getImage(-1));
-
-console.log("-- Test 6: Try to delete size 'S' from array");
-console.log(item.getSize());
-item.deleteSize("S");
-console.log(item.getSize(), "\n");
-
-console.log("-- Test 7: Try to add size 'XXS' from array");
-item.addSize("XXS");
-console.log(item.getSize(), "\n");
-
-console.log("-- Test 8: Try to delete non-exist size ");
-tryMethod(() => item.deleteSize("Z"));
 
 console.log("-- Test 9: Try to add new review ");
 console.log(item.getReview());
@@ -151,16 +155,26 @@ tryMethod(() => item.deleteReview(10000));
 console.log("-- Test 13: Try method getAverageRating");
 console.log(item.getAverageRating(), "\n");
 
-console.log("-- Test 14: Try function searchProducts with word 'sh'");
-printFieldsOnly(() => searchProducts(products, "sh"));
+console.log("-- Test 13: Try method getFullInformation");
+console.log(item.getFullInformation(), "\n");
+
+console.log("-- Test 13: Try method getPriceForQuantity");
+console.log(item.getPriceForQuantity(5), "\n");
+
+console.log("-- Test 13: Try method getWithKey name");
+console.log(item.getWithKey("name"), "\n");
+
+console.log("-- Test 13: Try method getWithKey with invalid key");
+tryMethod(() => item.getWithKey("colo"));
+
+console.log("-- Test 14: Try function searchProducts with word 'Prof'");
+console.log(searchProducts(products, "Prof"), "\n");
 
 console.log("-- Test 15: Try function sortProducts by price");
-printFieldsOnly(() => sortProducts(products, "price"));
+console.log(sortProducts(products, "price"));
 
 console.log("-- Test 16: Try function sortProducts by ID");
-printFieldsOnly(() => sortProducts(products, "ID"));
+console.log(sortProducts(products, "ID"));
 
 console.log("-- Test 17: Try function sortProducts by name");
-printFieldsOnly(() => sortProducts(products, "name"));
-
-
+console.log(sortProducts(products, "name"));

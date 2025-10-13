@@ -10,29 +10,85 @@ function Product(ID, name, description, price, brand, reviews, images) {
   this.reviews = reviews;
   this.images = images;
 
-  this.getID = () => this.ID;
-  this.setID = (ID) => (this.ID = ID);
+  this.getID = function () {
+    this.ID;
+  };
+  this.setID = function (ID) {
+    if (typeof ID !== "number" || isNaN(ID)) {
+      throw new Error("Type of ID must be a 'Number'!");
+    }
+    this.ID = ID;
+  };
 
-  this.getName = () => this.name;
-  this.setName = (name) => (this.name = name);
+  this.getName = function () {
+    this.name;
+  };
+  this.setName = function (name) {
+    if (typeof name !== "string") {
+      throw new Error("Type of name must be a 'String'!");
+    }
+    this.name = name;
+  };
 
-  this.getDescription = () => this.description;
-  this.setDescription = (description) => (this.description = description);
+  this.getDescription = function () {
+    this.description;
+  };
+  this.setDescription = function (description) {
+    if (typeof description !== "string") {
+      throw new Error("Type of description must be a 'String'!");
+    }
+    this.description = description;
+  };
 
-  this.getPrice = () => this.price;
-  this.setPrice = (price) => (this.price = price);
+  this.getPrice = function () {
+    this.price;
+  };
+  this.setPrice = function (price) {
+    if (typeof price !== "number" || isNaN(price)) {
+      throw new Error("Type of price must be a 'Number'!");
+    }
+    this.price = price;
+  };
 
-  this.getBrand = () => this.brand;
-  this.setBrand = (brand) => (this.brand = brand);
+  this.getBrand = function () {
+    this.brand;
+  };
+  this.setBrand = function (brand) {
+    if (typeof brand !== "string") {
+      throw new Error("Type of brand must be a 'String'!");
+    }
+    this.brand = brand;
+  };
 
-  this.getSize = () => this.size;
-  this.setSize = (size) => (this.size = size);
+  this.getSize = function () {
+    this.size;
+  };
+  this.setSize = function (size) {
+    if (typeof size !== "string") {
+      throw new Error("Type of size must be a 'String'!");
+    }
+    this.size = size;
+  };
 
-  this.getDate = () => this.date;
-  this.setDate = (date) => (this.date = date);
+  this.getDate = function () {
+    this.date;
+  };
+  this.setDate = function (date) {
+    if (typeof date !== "string") {
+      throw new Error("Type of date must be a 'String'!");
+    }
+    this.date = date;
+  };
 
-  this.getReview = () => this.reviews;
-  this.setReview = (reviews) => (this.reviews = reviews);
+  this.getReview = function () {
+    this.reviews;
+  };
+  this.setReview = function (reviews) {
+    if (typeof reviews !== "object") {
+      throw new Error("Type of reviews must be a 'Object'!");
+    }
+    this.reviews = reviews;
+  };
 
   this.getReviewByID = (ID) =>
     reviews.find((el) => el.ID === ID) || "Review not found";
@@ -92,18 +148,38 @@ function Reviews(ID, author, comment, service, price, value, quality) {
   };
 }
 
-function getCurrentDate () {
-  const date = new Date(); 
-  return date.getFullYear()+'-'+
-  String(date.getMonth()+1).padStart(2, "0")+'-'+
-  String(date.getDate()).padStart(2, "0")+' '+
-  String(date.getHours()).padStart(2, "0")+':'+
-  String(date.getMinutes()).padStart(2, "0")+':'+
-  String(date.getSeconds()).padStart(2, "0")
+function getCurrentDate() {
+  const date = new Date();
+  return (
+    date.getFullYear() +
+    "-" +
+    String(date.getMonth() + 1).padStart(2, "0") +
+    "-" +
+    String(date.getDate()).padStart(2, "0") +
+    " " +
+    String(date.getHours()).padStart(2, "0") +
+    ":" +
+    String(date.getMinutes()).padStart(2, "0") +
+    ":" +
+    String(date.getSeconds()).padStart(2, "0")
+  );
 }
-let a = 0.3 - 0.2
-console.log(a.toFixed(1));
 
+function searchProducts(products, search) {
+  return products.filter((product) => {
+    return (
+      product.name.toLowerCase().includes(search.toLowerCase()) ||
+      product.description.toLowerCase().includes(search.toLowerCase())
+    );
+  });
+}
 
+function sortProducts(products, sortRule) {
+  return products.sort((firstProduct, secondProduct) => {
+    if (firstProduct[sortRule] < secondProduct[sortRule]) return -1;
+    if (firstProduct[sortRule] === secondProduct[sortRule]) return 0;
+    if (firstProduct[sortRule] > secondProduct[sortRule]) return 1;
+  });
+}
 
-export { Product, Reviews };
+export { Product, Reviews, sortProducts, searchProducts };

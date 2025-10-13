@@ -10,6 +10,7 @@ function Electronics(
   warranty,
   power
 ) {
+  AbstractProduct.call(this);
   this.name = name;
   this.description = description;
   this.price = price;
@@ -18,8 +19,7 @@ function Electronics(
   this.images = images;
   this.brand = brand;
   this.warranty = warranty,
-  this.power = power, 
-  AbstractProduct.call(this);
+  this.power = power
 }
 
   Electronics.prototype = Object.create(AbstractProduct.prototype);
@@ -40,6 +40,13 @@ function Electronics(
     this.power = power;
     return this
   }
+
+  Electronics.prototype.getFullInformation = function () {
+  let information = AbstractProduct.prototype.getFullInformation.call(this);
+  information += `Warranty - ${this.warranty} \n`
+  information += `Power - ${this.power}`
+  return information
+}
 
 
 export {Electronics}
