@@ -20,6 +20,7 @@ function readHttpLikeInput() {
 
 let contents = readHttpLikeInput();
 
+
 function outputHttpResponse(statusCode, statusMessage, headers, body) {
   const date = new Date().toString();
 
@@ -37,35 +38,20 @@ ${body}`
 
 function processHttpRequest($method, $uri, $headers, $body) {
   let statusCode;
-  let statusMessage;
-  let statusConfirm = false;
-  const login = $body.match(/(?<=\=)\w+/)[0];
-  const password = $body.match(/[\w\d]+$/)[0];
+  let statusMessage;  
+  const folder = $headers["Host"].match(/^[a-z-_0-9]+/)[0];
 
-  const data = require("fs").readFileSync("passwords.txt").toString();
-
-  if (
-    $method === "POST" &&
-    /^\/api\/checkLoginAndPassword/.test($uri) &&
-    /^application\/x-www-form-urlencoded/.test($headers["Content-Type"])
-  ) {
-    const arrOfLogPas = data.split("\n");
-    for (line of arrOfLogPas) {
-      if (
-        login === line.match(/[a-zA-z0-9]+/)[0] &&
-        password === line.match(/[\w\d]+$/m)[0]
-      ) {
-        statusCode = 200;
-        statusMessage = "OK";
-        $body = '<h1 style="color:green">FOUND</h1>';
-        statusConfirm = true;
-      }
-    }
-  }
-  if (!statusConfirm) {
+  const path = require("path");
+  const filePath = path.join(__dirname, `${folder}${$uri}`);
+  
+  try {
+    $body = require("fs").readFileSync(filePath).toString();
+    statusCode = 200;
+    statusMessage = "OK";
+  } catch (error) {
     statusCode = "404";
     statusMessage = "Not Found";
-    $body = "not found";
+    $body = `File of path ${folder}${$uri} not found`;
   }
 
   $headers["Content-Length"] = $body.length;
@@ -91,8 +77,8 @@ function parseTcpStringAsHttpRequest(string) {
   for (line of arr) {
     if (/GET|POST/.test(line)) {
       method = line.match(/GET|POST/)[0];
-      if (/\/[^\s]+/.test(line)) {
-        uri = line.match(/\/[^\s]+/)[0];
+      if (/\/[^\s]*/.test(line)) {
+        uri = line.match(/\/[^\s]*/)[0];
       }
     } else if (/^.+\:/.test(line)) {
       headers[normalize(line.match(/^[^:]+/)[0])] = line
