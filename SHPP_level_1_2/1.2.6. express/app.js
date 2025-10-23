@@ -1,3 +1,4 @@
+const { upperPart, bottomPart } = require("./page_template.js");
 const express = require("express");
 const app = express();
 const port = 3000;
@@ -14,68 +15,37 @@ try {
 }
 
 app.get("/", (req, res) => {
-  return res.send(`<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View counter</title>
-</head>
-<body style="background-color: rgb(36, 36, 36);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; 
-            margin: 0;">
-
-    <div style="width: 400px;
-                height: 150px;
-                background-color: rgb(212, 212, 212);
-                display: flex;
-                justify-content: center;
-                align-items: center; 
-                border-radius: 10px;">
-
-        <h1><a href="/hello">Counter</a></h1>            
-        
-    </div>
-    
-</body>
-</html>`);
+  return res.send(`
+    ${upperPart}
+        <h1><a href="/hello">View counter</a> <br><br>
+        <a href="/sum?first=5&second=3">Sum of: 5 + 3</a></h1>
+    ${bottomPart}`);
 })
 
 app.get("/hello", (req, res) => {
   counter = parseInt(counter) + 1;
   fs.writeFileSync(filePath, counter.toString());
-  return res.send(`<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View counter</title>
-</head>
-<body style="background-color: rgb(36, 36, 36);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; 
-            margin: 0;">
-
-    <div style="width: 400px;
-                height: 150px;
-                background-color: rgb(212, 212, 212);
-                display: flex;
-                justify-content: center;
-                align-items: center; 
-                border-radius: 10px;">
-
-        <h1>View counter: ${counter}</h1>            
-        
-    </div>
-    
-</body>
-</html>`);
+  return res.send(`
+    ${upperPart}
+        <h1>View counter: ${counter}</h1>        
+    ${bottomPart}`);
 });
+
+app.get("/sum", (request, response) => {
+  const {
+    query:{first, second} 
+  } = request;
+  if (isNaN(parseInt(first))||isNaN(parseInt(second))){
+    return response.status(400).send(`
+      ${upperPart}
+      <h1>One of the values is not a number</h1>
+      ${bottomPart}`)
+  }
+  return response.status(200).send(`
+    ${upperPart}
+    <h1>${first} + ${second} = ${parseInt(first)+parseInt(second)}</h1>
+    ${bottomPart}`)
+})
 
 app.listen(port, () => {
   console.log(`This app listening on port ${port}`);
