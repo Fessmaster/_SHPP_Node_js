@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>View counter</title>
+  </head>
+  <body>
+    <div class="back">
+      <div class="task">
+        <div class="box" id="task1"></div>
+        <input type="button" value="CSS" onclick="cssHidden()" />
+      </div>
+      <div class="task">
+        <div class="box" id="task2"></div>
+        <input type="button" value="JS Delate" onclick="jsDelate()" />
+      </div>
+      <div class="task">
+        <div class="box" id="task3"></div>
+        <input type="button" value="CSS & JS" onclick="jsCssHidden()" />
+      </div>
+    </div>
+  </body>
+  <script>
+    function cssHidden() {
+      document.getElementById("task1").style.display = "none";
+    }
+    function jsDelate () {
+      document.getElementById("task2").remove()
+    }
+    function jsCssHidden() {
+      document.getElementById("task3").setAttribute("class", "hidden")
+    }
+  </script>
+</html>
