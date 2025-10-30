@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Task 9</title>
+  </head>
+  <body>
+    <div class="main-link"><a href="index.html">Main page</a></div>
+    <div class="main">
+      <div class="task8-back">
+        <h2>You can see next images:</h2>
+        <div class="task8-text">
+          <p>Put one or more links in textarea</p>
+          <br />
+          <p>img/hello.jpg</p>
+          <p>img/goodbye.jpg</p>
+          <p>img/cat.jpg</p>
+        </div>
+        <textarea name="img" id="text"></textarea><br />
+        <input type="button" id="button" value="Show img" onclick="showImg()" />
+        <div class="task9" id="task9"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function showImg() {
+      const strImg = document.getElementById("text").value;
+      const images = strImg.split("\n");
+      const parent = document.getElementById("task9");
+      parent.innerHTML = "";
+      for (img of images) {
+        if (img !== "") {
+          const newImg = document.createElement("img");
+          newImg.src = img;
+          parent.appendChild(newImg);
+        }
+      }
+    }
+  </script>
+</html>

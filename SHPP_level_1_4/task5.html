@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Task 5</title>
+  </head>
+  <body>
+    <div class="main-link"><a href="index.html">Main page</a></div>
+    <div class="main">
+      <div class="task5-back">
+        <div class="box" id="box" onclick="clickFunc()"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let counter = 0;
+    function clickFunc() {
+      if (counter === 0) {
+        alert("Hello!");
+        counter++;
+      } else {
+        document.getElementById("box").style.display = "none";
+      }
+    }
+  </script>
+</html>

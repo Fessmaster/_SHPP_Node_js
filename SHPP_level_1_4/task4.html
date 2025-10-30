@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Task 4</title>
+  </head>
+  <body>
+    <div class="main-link"><a href="index.html">Main page</a></div>
+    <div class="main">
+      <div class="task4-back">
+        <div class="task4-inner-input">
+          <input type="text" id="selector" />
+          <input type="button" value="Hide/Show" onclick="hideShow()" />
+        </div>
+        <div class="task3-inner-boxes">
+          <h1>This is "h1"</h1>
+        </div>
+        <div class="task3-inner-boxes">
+          <h2>This is "h2"</h2>
+        </div>
+        <div class="task3-inner-boxes">
+          <p>This is "p"</p>
+        </div>
+        <div class="task3-inner-boxes">
+          <span>These squares has class ".box" </span>
+        </div>
+        <div class="task3-inner-boxes">
+          <div class="task">
+            <div class="box"></div>
+          </div>
+          <div class="task">
+            <div class="box"></div>
+          </div>
+          <div class="task">
+            <div class="box"></div>
+          </div>
+          <div class="task">
+            <div class="box"></div>
+          </div>
+          <div class="task">
+            <div class="box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let hidden = false;
+
+    function hideShow() {
+      let selector = document.getElementById("selector").value;
+      let elem = document.querySelectorAll(selector);
+      if (hidden) {
+        for (e of elem) {
+          e.style.display = "inherit";
+        }
+        hidden = false;
+      } else {
+        for (e of elem) {
+          e.style.display = "none";
+        }
+        hidden = true;
+      }
+      console.log(selector);
+    }
+  </script>
+</html>

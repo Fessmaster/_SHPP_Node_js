@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Task 8</title>
+  </head>
+  <body>
+    <div class="main-link"><a href="index.html">Main page</a></div>
+    <div class="main">
+      <div class="task8-back">
+        <h2>You can see next images:</h2>
+        <div class="task8-text">
+          <p>Put one of this links in field</p><br>
+          <p>img/hello.jpg</p>
+          <p>img/goodbye.jpg</p>          
+          <p>img/cat.jpg</p>          
+        </div>
+        <input type="text" id="text" /><br>
+        <input type="button" id="button" value="Show img" onclick="showImg()" />
+        <div class="task8">
+            <img id="task8-img" src="" alt="">
+        </div>
+        <div class="box" id="box" style="display: none"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function showImg(){
+      const img = document.getElementById("text").value;
+      document.getElementById("task8-img").src = img;
+    }
+  </script>
+</html>

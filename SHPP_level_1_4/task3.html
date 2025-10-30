@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Task 3</title>
+  </head>
+  <body>
+    <div class="main-link"><a href="index.html">Main page</a></div>
+    <div class="main">
+      <div class="task3-back">
+        <div class="task3-inner-button">
+          <input
+            type="button"
+            id="button"
+            value="Hide"
+            onclick="jsCssHidden()"
+          />
+        </div>
+        <div class="task3-inner-boxes">
+          <div class="task">
+            <div class="box"></div>
+          </div>
+          <div class="task">
+            <div class="box"></div>
+          </div>
+          <div class="task">
+            <div class="box"></div>
+          </div>
+          <div class="task">
+            <div class="box"></div>
+          </div>
+          <div class="task">
+            <div class="box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let hidden = false;
+    const boxes = document.getElementsByClassName("box");
+    console.log(boxes);
+    function jsCssHidden() {
+      if (hidden) {
+        for (box of boxes) {
+          box.style.display = "inherit";
+        }
+        document.getElementById("button").value = "Hide";
+        hidden = false;
+      } else {
+        for (box of boxes) {
+          box.style.display = "none";
+        }
+        document.getElementById("button").value = "Show";
+        hidden = true;
+      }
+    }
+  </script>
+</html>

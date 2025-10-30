@@ -1,10 +1,27 @@
+
+
+
 body {
+  background-color: rgb(36, 36, 36);
+  
+}
+
+.main-link{
+  display: block;
+  border: 2px solid rgb(255, 255, 255);
+  background-color: rgb(212, 212, 212);
+  text-align: center;
+  width: 100px;
+  height: 30px;
+}
+
+.main {
   background-color: rgb(36, 36, 36);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  /* height: 100vh;
+  margin: 0; */
 }
 
 .back {
@@ -29,6 +46,153 @@ body {
   background-color: black;
 }
 
-.hidden{
+.hidden {
   display: none;
+}
+
+#button {
+  margin-bottom: 10px;
+}
+
+.task3-back {
+  width: 600px;
+  height: 400px;
+  background-color: rgb(212, 212, 212);
+  display: flex;
+  border-radius: 10px;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.task3-inner-button {
+  text-align: center;
+}
+
+.task3-inner-boxes {
+  display: flex;
+}
+
+.task4-inner-input {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.task4-back {
+  width: 600px;
+  height: 800px;
+  background-color: rgb(212, 212, 212);
+  display: flex;
+  border-radius: 10px;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.task5-back {
+  width: 600px;
+  height: 400px;
+  background-color: rgb(212, 212, 212);
+  display: block;
+  border-radius: 10px;
+}
+
+.task5-back .box {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.task6-back {
+  text-align: center;
+  width: 600px;
+  height: 400px;
+  background-color: rgb(212, 212, 212);
+  display: block;
+  border-radius: 10px;
+}
+
+.task6-back .box {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(255, 0, 0);
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+
+.task7-back {
+  text-align: center;
+  width: 600px;
+  height: 400px;
+  background-color: rgb(212, 212, 212);
+  display: block;
+  border-radius: 10px;
+}
+
+.task7-back .box {
+  width: 50px;
+  height: 20px;
+  background-color: green;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.task8-back {
+  padding-top: 10px;
+  text-align: center;
+  width: 600px;
+  background-color: rgb(212, 212, 212);
+  display: block;
+  border-radius: 10px;
+}
+
+.task8-back input {
+  margin-bottom: 10px;
+}
+
+.task8-back .box {
+  width: 50px;
+  height: 20px;
+  background-color: green;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.task8 img{
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.task8-text{
+  width: 200px;
+  margin-left: 200px;
+  text-align: left;
+}
+
+.task8-text p{
+  margin: 0;
+  padding: 0;
+}
+
+.task9 img{
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.task10-back {
+  display: flex;
+  justify-content: space-between;}
+
+.coordinate{
+  padding-left: 10px;
+  text-align: left;
+  width: 300px;
+  background-color: rgb(212, 212, 212);
+  display: block;
+  border-radius: 10px;
+}
+.coordinate h2, p{
+  margin: 0px;
+  margin-top: 10px;
 }
