@@ -196,3 +196,25 @@ body {
   margin: 0px;
   margin-top: 10px;
 }
+
+.task13-inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.textblock {
+  margin: 10px;
+  width: 150px;
+  height: 150px;
+  background-color:beige;
+  text-align: left;
+}
+
+.labelblock {
+  margin: 10px;
+  width: 150px;
+  height: 30px;
+  background-color:beige;
+  text-align: center;
+  border: ipx solid black;
+}

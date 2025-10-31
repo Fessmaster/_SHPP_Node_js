@@ -1,0 +1,6 @@
+    {
+      "name": "My Extension",
+      "permissions": [
+        "cookies"
+      ]
+    }

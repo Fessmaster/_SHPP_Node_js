@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Task 13</title>
+  </head>
+  <body onload="loadData()">
+    <div class="main-link"><a href="index.html">Main page</a></div>
+    <div class="main">
+      <div class="task7-back"> 
+        <div class="task13-inner">
+          <div class="labelblock">
+            <p>Local Storage</p>
+          </div>
+          <div class="labelblock">
+            <p>Cookies</p>
+          </div>
+          <div class="labelblock">
+            <p>Session Storage</p>
+          </div>
+        </div>
+        <div class="task13-inner">  
+          <div class="textblock" id="local" contenteditable="true" oninput="saveInLocalStorage()"></div>
+          <div class="textblock" id="cookies" contenteditable="true" oninput="saveInCookies()"></div>
+          <div class="textblock" id="session" contenteditable="true" oninput="saveInSessionStorage()"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const saveInLocalStorage = () => {
+      let firstBlock = document.getElementById("local").innerHTML ;
+      localStorage.setItem("firstBlock", firstBlock)
+      
+    }
+
+    const saveInCookies = () => {
+      let secondBlock = document.getElementById("cookies").innerHTML ;
+      document.cookie = secondBlock;     
+    }
+
+    const loadData = () => {      
+      firstBlock = localStorage.getItem("firstBlock")
+      document.getElementById("local").innerHTML = firstBlock
+
+      secondBlock = document.cookie;
+      document.getElementById("cookies").innerHTML = secondBlock
+    }
+  </script>
+</html>
