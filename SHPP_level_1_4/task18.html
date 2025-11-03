@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Task 18</title>
+  </head>
+  <body>
+    <div class="main-link"><a href="index.html">Main page</a></div>
+    <div class="main">
+      <div class="task18-back">
+        <!-- <div class="drop-field" id="drop-field">
+          <h1>Drop file here!</h1>
+        </div> -->
+        <h2 id="hidden-text">Drop file in field</h2>
+        <form id="drop-form">
+          <input type="file"><br /> 
+          <input type="submit" value="GO" />
+        </form>
+      </div>
+    </div>
+  </body>
+  <script>
+    const fileForm = document.getElementById("drop-form");
+    // const dropField = document.getElementById("drop-field");
+    const hiddenText = document.getElementById("hidden-text");
+    fileForm.ondragover = function(event) {
+    event.preventDefault(); 
+};
+
+    fileForm.ondragenter = function (event) {
+      event.preventDefault();
+      hiddenText.style.visibility = "visible";
+      fileForm.style.border = "3px solid green"
+    };
+    fileForm.ondragleave = function (event) {
+      event.preventDefault();
+      hiddenText.style.visibility = "hidden";
+      fileForm.style.border = "1px solid black"
+    };
+
+    fileForm.ondrop = function (event) {
+      event.preventDefault();
+      const file = event.dataTransfer.files[0];      
+      hiddenText.innerHTML = `Added file ${file.name}`;
+      document.getElementById("file-input").value =  file.name
+    };
+  </script>
+</html>

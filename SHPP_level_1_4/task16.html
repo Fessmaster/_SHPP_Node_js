@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Task 5</title>
+  </head>
+  <body id="body">
+    <div class="task16-hide" id="hide-box">
+      <div class="task16-hide-box">
+        <h1>To scroll down - click on box</h1>
+      </div>
+    </div>
+    <div id="up-button" onclick="scrollUp()">
+      <p>&#8679</p>
+      <p>Go UP!</p>
+    </div>
+    <div class="main-link"><a href="index.html">Main page</a></div>
+    <div class="main">
+      <div class="task16-back">
+        <input type="button" name="" id="hide" value="Show box">
+        <h1>Scroll down &#8681</h1>
+        <p>&#8681</p><p>&#8681</p><p>&#8681</p><p>&#8681</p><p>&#8681</p><p>&#8681</p><p>&#8681</p>
+        <p>&#8681</p><p>&#8681</p><p>&#8681</p><p>&#8681</p><p>&#8681</p><p>&#8681</p><p>&#8681</p>
+        <p>&#8681</p><p>&#8681</p><p>&#8681</p><p>&#8681</p>  
+          
+        
+      </div>
+    </div>
+  </body>
+  <script>
+  
+  let currentPosition
+  function showButton (){
+      if (window.scrollY >= 300 ){
+        document.getElementById("up-button").style.visibility = "inherit"
+      }
+      if (window.scrollY <=50){
+        document.getElementById("up-button").style.visibility = "hidden"
+      }
+    }
+    
+  function showHideBox () {
+    document.getElementById('hide-box').style.visibility = 'visible'
+    document.getElementById("body").style.overflow = "hidden"
+  }
+ 
+  const hideBox = document.getElementById("hide-box")
+  hideBox.onclick = function () {
+    hideBox.style.visibility = "hidden"
+    document.getElementById("body").style.overflow = "inherit"
+  }
+
+  function delay (pause){
+      return new Promise (resolve => {setTimeout(resolve, pause)})
+    }
+
+    async function scrollUp() {
+      const screenHeight = window.screen.height;
+      console.log(screenHeight);
+      while (window.scrollY >= 10){
+        let stepSize = 5  
+          window.scroll(0, window.scrollY-20);
+          await delay(10)
+          if (stepSize <= 20) stepSize++
+          window.scroll
+        }
+      }
+
+    
+    window.addEventListener('scroll', showButton); 
+    hide.addEventListener('click', showHideBox)
+
+    
+  </script>
+</html>

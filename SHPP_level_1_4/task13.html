@@ -9,7 +9,7 @@
   <body onload="loadData()">
     <div class="main-link"><a href="index.html">Main page</a></div>
     <div class="main">
-      <div class="task7-back"> 
+      <div class="task7-back">
         <div class="task13-inner">
           <div class="labelblock">
             <p>Local Storage</p>
@@ -21,32 +21,54 @@
             <p>Session Storage</p>
           </div>
         </div>
-        <div class="task13-inner">  
-          <div class="textblock" id="local" contenteditable="true" oninput="saveInLocalStorage()"></div>
-          <div class="textblock" id="cookies" contenteditable="true" oninput="saveInCookies()"></div>
-          <div class="textblock" id="session" contenteditable="true" oninput="saveInSessionStorage()"></div>
+        <div class="task13-inner">
+          <div
+            class="textblock"
+            id="local"
+            contenteditable="true"
+            oninput="saveInLocalStorage()"
+          ></div>
+          <div
+            class="textblock"
+            id="cookies"
+            contenteditable="true"
+            oninput="saveInCookies()"
+          ></div>
+          <div
+            class="textblock"
+            id="session"
+            contenteditable="true"
+            oninput="saveInSessionStorage()"
+          ></div>
         </div>
       </div>
     </div>
   </body>
   <script>
     const saveInLocalStorage = () => {
-      let firstBlock = document.getElementById("local").innerHTML ;
-      localStorage.setItem("firstBlock", firstBlock)
-      
-    }
+      let firstBlock = document.getElementById("local").innerHTML;
+      localStorage.setItem("firstBlock", firstBlock);
+    };
 
     const saveInCookies = () => {
-      let secondBlock = document.getElementById("cookies").innerHTML ;
-      document.cookie = secondBlock;     
-    }
+      let secondBlock = document.getElementById("cookies").innerHTML;
+      document.cookie = secondBlock;
+    };
 
-    const loadData = () => {      
-      firstBlock = localStorage.getItem("firstBlock")
-      document.getElementById("local").innerHTML = firstBlock
+    const saveInSessionStorage = () => {
+      let thirdBlock = document.getElementById("session").innerHTML;
+      sessionStorage.setItem("thirdBlock", thirdBlock)
+    };
+
+    const loadData = () => {
+      firstBlock = localStorage.getItem("firstBlock");
+      document.getElementById("local").innerHTML = firstBlock;
 
       secondBlock = document.cookie;
-      document.getElementById("cookies").innerHTML = secondBlock
-    }
+      document.getElementById("cookies").innerHTML = secondBlock;
+
+      thirdBlock = sessionStorage.getItem("thirdBlock")
+      document.getElementById("session").innerHTML = thirdBlock
+    };
   </script>
 </html>

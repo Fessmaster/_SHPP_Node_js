@@ -218,3 +218,179 @@ body {
   text-align: center;
   border: ipx solid black;
 }
+
+
+.task14-back {
+  padding-top: 10px;
+  text-align: center;
+  width: 600px;  
+  background-color: rgb(212, 212, 212);
+  display: block;
+  border-radius: 10px;
+}
+.task14-back p{
+  font-size: 60px;
+}
+
+#up-button {
+  visibility: hidden;
+  position: fixed;
+  bottom: 10%;
+  right: 10%;
+  padding: 5px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: rgb(179, 169, 155);
+  border: 2px solid black;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+#up-button:hover {
+  background-color: antiquewhite;
+  border: 4px solid black;
+}
+
+#up-button:active {
+  cursor: grabbing;
+}
+
+.task15-back {
+  padding-top: 10px;
+  display: flex;
+  width: 600px;
+  height: 400px;  
+  background-color: rgb(212, 212, 212);  
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.task15-back .inner {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  align-content: center;
+  flex-wrap: wrap;
+  background-color: green;
+}
+
+.task15-back .outer {    
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+
+}
+
+.task16-back {
+  padding-top: 10px;
+  text-align: center;
+  width: 600px;
+  height: 1500px;
+  background-color: rgb(212, 212, 212);
+  border-radius: 10px;
+}
+
+.task16-back input {
+  width: 150px;
+  height: 50px;
+  border: 2px solid;
+  border-radius: 5px;
+  background-color: rgb(235, 225, 43);
+  font-size: 20px;
+}
+.task16-back p{
+  font-size: 60px;
+}
+
+.task16-hide{  
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+
+}
+
+.task16-hide-box{
+  position: fixed;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.70);
+  border: 2px solid black;
+  border-radius: 20px;
+  width: 90%;
+  height: 90vh; 
+  top:  50%;
+  left: 50%;
+  transform: translate(-50%, -50%)  
+}
+
+.task16-hide-box h1{
+  color: white;
+  margin-top: 40vh;
+}
+
+.task17-back {
+  width: 600px;
+  height: 400px;
+  background-color: rgb(212, 212, 212);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  text-align: center;
+
+}
+
+.task17-back input{
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 24px;    
+}
+
+.task18-back {
+  width: 600px;
+  height: 400px;
+  background-color: rgb(212, 212, 212);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  text-align: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.task18-back h2{
+  visibility: hidden;
+}
+
+.task18-back form {
+  width: 500px;
+  height: 150px;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  
+}
+
+.drop-field {
+  width: 500px;
+  height: 150px;
+  border: 1px solid black;
+  border-radius: 10px;
+  position: fixed;
+  background-color: rgba(0, 128, 0, 0.6);
+  text-align: center;
+  color: white;
+  visibility: hidden;
+}
+
+.task18-back input{
+  /* width: 100px; */
+  height: 50px;
+  border-radius: 5px;
+  font-size: 24px;    
+}

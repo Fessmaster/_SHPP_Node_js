@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Task 5</title>
+  </head>
+  <body onscroll="showButton()">
+    <div id="up-button" onclick="scrollUp()">
+      <p>&#8679;</p>
+      <p>Go UP!</p>
+    </div>
+    <div class="main-link"><a href="index.html">Main page</a></div>
+    <div class="main">
+      <div class="task14-back">
+        <h1>Scroll down &#8681;</h1>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+        <p>&#8681;</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    function showButton() {
+      if (window.scrollY >= 300) {
+        document.getElementById("up-button").style.visibility = "inherit";
+      }
+      if (window.scrollY == 0) {
+        document.getElementById("up-button").style.visibility = "hidden";
+      }
+    }
+
+    function delay(pause) {
+      return new Promise((resolve) => {
+        setTimeout(resolve, pause);
+      });
+    }
+
+    async function scrollUp() {
+      const accelerationLength = window.screen.height * 0.3;
+      let initialStep = 1;
+      const currentPosition = window.scrollY;
+
+      while (window.scrollY >= 10) {
+        window.scroll(0, window.scrollY - initialStep);
+        await delay(10);
+        if (window.scrollY > window.scrollY-currentPosition){
+          initialStep++;
+        }
+      }
+    }
+  </script>
+</html>
