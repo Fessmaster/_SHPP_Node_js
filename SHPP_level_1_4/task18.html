@@ -10,41 +10,50 @@
     <div class="main-link"><a href="index.html">Main page</a></div>
     <div class="main">
       <div class="task18-back">
-        <!-- <div class="drop-field" id="drop-field">
-          <h1>Drop file here!</h1>
-        </div> -->
         <h2 id="hidden-text">Drop file in field</h2>
+        <div class="drop-field"></div>
         <form id="drop-form">
-          <input type="file"><br /> 
-          <input type="submit" value="GO" />
+          <label class="custom-file-button">
+            <span>Обрати файл</span>
+            <input type="file" hidden />
+          </label>
+          <span id="file-name">Файл не вибрано</span><br />
+          <input type="submit" value="GO" id="submit-button" />
         </form>
       </div>
     </div>
   </body>
   <script>
     const fileForm = document.getElementById("drop-form");
-    // const dropField = document.getElementById("drop-field");
     const hiddenText = document.getElementById("hidden-text");
-    fileForm.ondragover = function(event) {
-    event.preventDefault(); 
-};
+    const field = document.querySelector(".task18-back");
+    const fileName = document.getElementById("file-name");
 
-    fileForm.ondragenter = function (event) {
+    fileForm.ondragover = function (event) {
+      event.preventDefault();
+    };
+
+    const dragEnter = function (event) {
       event.preventDefault();
       hiddenText.style.visibility = "visible";
-      fileForm.style.border = "3px solid green"
+      fileForm.style.border = "3px solid green";
+      
     };
-    fileForm.ondragleave = function (event) {
+    const dragLeave = function (event) {
       event.preventDefault();
       hiddenText.style.visibility = "hidden";
-      fileForm.style.border = "1px solid black"
+      fileForm.style.border = "1px solid black";
+      
     };
 
-    fileForm.ondrop = function (event) {
+    field.ondragenter = dragEnter;   
+
+    field.ondrop = function (event) {
       event.preventDefault();
-      const file = event.dataTransfer.files[0];      
-      hiddenText.innerHTML = `Added file ${file.name}`;
-      document.getElementById("file-input").value =  file.name
+      const file = event.dataTransfer.files[0];
+      hiddenText.innerHTML = `File added successfully!`;
+      fileForm.style.border = "3px solid green";      
+      fileName.innerHTML = `Обрано ${file.name}`
     };
   </script>
 </html>
