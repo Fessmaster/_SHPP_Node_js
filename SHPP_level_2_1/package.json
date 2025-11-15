@@ -1,0 +1,21 @@
+{
+  "name": "shpp_level_2_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clear": "rimraf dist",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rimraf": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0"
+  }
+}
