@@ -328,7 +328,7 @@ README:
                 login: '',
                 pass: '',
                 backendLanguage: 'JS',
-                apiURL: 'http://localhost:3005/api/',
+                apiURL: '/api/',
                 apiVersion: 'v1',
                 step: ''
             },
@@ -350,8 +350,7 @@ README:
                             if (response.error === 'forbidden') {
                                 this.step = 'login';
                             } else {                                
-                                this.tasks = response.items.map((item) => {
-                                    console.log('-----------------------HERE!---------------------------');
+                                this.tasks = response.items.map((item) => {                                    
                                     item.editable = false;
                                     console.log(item);
                                     return item;
