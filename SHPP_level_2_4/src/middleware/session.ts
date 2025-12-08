@@ -1,7 +1,7 @@
 import session from 'express-session'
-import sessionFileStore from 'session-file-store'
+import MongoSession from "connect-mongodb-session"
 
-const FileStore = sessionFileStore(session)
+const Store = MongoSession(session)
 
 export default function createSession (){
   const SESSION_LIFETIME = 86400
@@ -12,10 +12,10 @@ export default function createSession (){
   return session({
     secret:secretKey,
     saveUninitialized: false,
-    store: new FileStore ({
-      path: './sessions',
-      ttl: SESSION_LIFETIME,
-      retries: 5,    
+    store: new Store ({
+      uri:process.env.MONGO_URI as string,
+      collection: "TODOSession",
+      expires: SESSION_LIFETIME*1000,      
     }),
     cookie: {
       httpOnly: true,
