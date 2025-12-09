@@ -3,7 +3,7 @@ import mongoose, {Schema, Document, Types} from "mongoose"
 export interface ITask extends Document {
   text: string,
   checked: boolean,
-  user: Types.ObjectId
+  user: Types.ObjectId | string
 }
 
 const TaskSchema = new Schema(

@@ -347,7 +347,7 @@ README:
                     })
                         .then(res => res.json())
                         .then((response) => {
-                            if (response.error === 'forbidden') {
+                            if (response.error === 'forbidden') {                                
                                 this.step = 'login';
                             } else {                                
                                 this.tasks = response.items.map((item) => {                                    
@@ -445,7 +445,7 @@ README:
                 logout() {
                     const route = this.apiVersion === 'v1' ? '/logout' : '/router';
                     const qs = {action: this.apiVersion === 'v1' ? '' : 'logout'};
-                    fetch(this.apiURL + this.apiVersion + route, {
+                    fetch(this.apiURL + this.apiVersion + route + '?' + new URLSearchParams(qs), {
                         method: this.apiVersion === 'v1' ? 'POST' : 'POST',
                         credentials: 'include',
                     }).then(res => res.json())
