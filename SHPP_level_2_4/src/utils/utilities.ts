@@ -1,15 +1,12 @@
-import fs from "fs/promises";
-import path from "path";
-
 import User, { IUser } from "../models/User";
 import Task, { ITask } from "../models/Task";
 import { Response } from "express";
 import { MyRequest } from "../models/types";
 
-const filePathToLogins = path.join(__dirname, "../../public/listOfLogins.json");
+
 
 export const handleRouterAction = {
-  getItems: async (req: MyRequest, res: Response) => {
+  getItems: async (req: MyRequest, res: Response) => {    
     if (!req.session.user) {
       res.status(401).json({ error: "forbidden" });
       return;
@@ -25,10 +22,7 @@ export const handleRouterAction = {
   },
 
   createItem: async (req: MyRequest, res: Response) => {
-    const newTask = req.body.text;
-    const owner = req.session.user?.login;
-    const user = await User.findOne({ login: owner });
-
+    const newTask = req.body.text;     
 
     createNewTask({ text: newTask, user: req.session.user?.id, });
     res.json({
@@ -87,6 +81,7 @@ export const handleRouterAction = {
       password: password,
     };
     createNewUser(user);
+    res.json({ ok: true });
   },
 
   login: async (req: MyRequest, res: Response) => {
@@ -100,21 +95,17 @@ export const handleRouterAction = {
 
     const entry = await userEntry(login);
     if (!entry || !entry?.password) {
-      res.status(401).json({ error: "Login or password incorrect" });
+      res.status(401).json({ error: 'not found' });
       return;
     }
 
     const isPasswordValid = await entry.isPasswordCorrect(password);
     if (!isPasswordValid) {
-      res.status(401).json({ error: "Login or password incorrect" });
+      res.status(401).json({ error: 'not found' });
       return;
     }
-    const user = await User.findOne({login: login})
-    if (!user){
-      res.status(401).json({ error: "Login or password incorrect" });
-      return;
-    }
-    req.session.user = { login: login, id: user?._id.toString()  };
+    
+    req.session.user = { login: login, id: entry?._id.toString()  };    
     res.json({
       ok: true,
     });
@@ -129,16 +120,6 @@ export const handleRouterAction = {
   },
 };
 
-export async function readFile(path: string) {
-  try {
-    const list = JSON.parse(await fs.readFile(path, { encoding: "utf8" }));
-    return list;
-  } catch (error: any) {
-    console.log("Reading error", error.message);
-    fs.writeFile(path, JSON.stringify([]));
-    return [];
-  }
-}
 
 export async function createNewUser(user: Partial<IUser>) {
   try {
